@@ -32,6 +32,40 @@ $$\gdef\pardif#1#2{\frac{\partial #1}{\partial #2}}$$
     </details>
 
 
+2. If there are two conditions:
+    $$
+      \begin{aligned}
+        \sum_{i=1}^Np_i&=1\\
+        \sum_{i=1}^Np_i\epsilon_i&=E\ (\mathrm{constant})
+      \end{aligned}
+    $$ on the variables $p_i \{i=1,\ldots,N\}$, find the stationary points of the following value:
+    $$
+      S=-\sum_{i=1}^Np_i\log p_i
+    $$
+    <details>
+      <summary>Answer</summary>
+
+      Let $\tilde{f}$ be 
+      $$
+        \tilde{f} = -\sum_{i=1}^Np_i\log p_i-\alpha\sum_{i=1}^Np_i -\beta\sum_{i=1}^Np_i\epsilon_i
+      $$ where $\alpha, \beta$ are the Lagrange multipliers. At the stationary points,
+      $$
+        \pardif{\tilde{f}}{p_i} = 0
+      $$ and then
+      $$
+        -\log p_i - 1 - \alpha -\beta\epsilon_i = 0
+      $$ threfore
+      $$
+        p_i = e^{-\alpha - 1} e^{-\beta\epsilon_i}
+      $$
+      By determining $\alpha$ based on the first condition, we obtain
+      $$
+        p_i = \frac{e^{-\beta\epsilon_i}}{\sum_{i=1}^Ne^{-\beta\epsilon_i}}
+      $$ $\beta$ can be determined based on the second condition
+      $$
+        \frac{\sum_{i=1}^N\epsilon_ie^{-\beta\epsilon}}{\sum_{i=1}^Ne^{-\beta\epsilon}} = E
+      $$
+    </details>
 
 
 
