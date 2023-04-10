@@ -1,6 +1,3 @@
-$$\gdef\dif{\mathrm{d}}$$
-$$\gdef\pardif#1#2{\frac{\partial #1}{\partial #2}}$$
-
 <h1>Mathematics for physics<h1>
 
 # Differentiation and partial differentiation
@@ -8,7 +5,7 @@ $$\gdef\pardif#1#2{\frac{\partial #1}{\partial #2}}$$
 1. If there is a condition 
     $$
       g(\bm{x})=c\mathrm{\quad where\quad}c\mathrm{\ \ is\ constant}
-    $$ on a variable $\bm{x} = (x_1,\ldots, x_n)$, find the extrema of $f(x,y,z)$. Here, assume that both functions $f, g$ belong to $C^1$. 
+    $$ on a variable $\bm{x} = (x_1,\ldots, x_n)$, find the extrema of $f(\bm{x})$. Here, assume that both functions $f, g$ belong to $C^1$. 
     <details>
       <summary>Answer</summary>
       
