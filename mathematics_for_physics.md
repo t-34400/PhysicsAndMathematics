@@ -1,3 +1,6 @@
+$$\gdef\dif{\mathrm{d}}$$
+$$\gdef\pardif#1#2{\frac{\partial #1}{\partial #2}}$$
+
 <h1>Mathematics for physics<h1>
 
 # Differentiation and partial differentiation
