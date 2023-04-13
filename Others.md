@@ -23,7 +23,7 @@ $$
 ## Shader program
 A shader that calculates the principal strains from the original and current vertex positions, and colors them based on their magnitude.
 - Vertex shader
-    ```kotlin
+    ```glsl
     #version 300 es
 
     in vec3 aCurrentPosition;
@@ -42,7 +42,7 @@ A shader that calculates the principal strains from the original and current ver
     ```
 
 - Fragment shader
-    ```kotlin
+    ```glsl
     #version 300 es
 
     precision mediump float;
@@ -89,3 +89,42 @@ A shader that calculates the principal strains from the original and current ver
         fragColor = vec4(ambient + diffuse + specular, 1.0);
     }
     ```
+```glsl
+mat3 getEigenvalues(mat3 A) {
+    int iter = 0;
+    const int maxIter = 10;
+    mat3 V = mat3(1.0);
+    while (iter < maxIter) {
+        // Find the off-diagonal element with maximum magnitude
+        int p = 0, q = 1;
+        float max = abs(A[0][1]);
+        if (abs(A[0][2]) > max) {
+            max = abs(A[0][2]);
+            p = 0;
+            q = 2;
+        }
+        if (abs(A[1][2]) > max) {
+            max = abs(A[1][2]);
+            p = 1;
+            q = 2;
+        }
+        
+        // Compute the rotation angle
+        float angle = atan(A[p][q] / (A[q][q] - A[p][p]));
+        
+        // Compute the rotation matrix
+        mat3 R = mat3(1.0);
+        R[p][p] = cos(angle);
+        R[p][q] = sin(angle);
+        R[q][p] = -sin(angle);
+        R[q][q] = cos(angle);
+        
+        // Update A and V
+        A = transpose(R) * A * R;
+        V *= R;
+        
+        iter++;
+    }
+    return A;
+}
+```
