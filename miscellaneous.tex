@@ -1,0 +1,49 @@
+\documentclass[]{article}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Miscellaneous}
+\author{@t-34400}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Strain}
+\definition{strain matrix}
+\subsection{Trianlge mesh (2D strain)}
+Let the infinitesimal triangular surface $OAB$ be deformed into an infinitesimal triangular surface $OA^\prime B^\prime$. When considering strain, the rigid body transformation part can be ignored, so it can be assumed that $O$, $A$ and $A^\prime$ are colinear and $OAB$ and $OA^\prime B^\prime$ are in the same plane. 
+
+In this case, the normal strains are described as follows:
+\begin{equation}
+    \begin{aligned}
+        \varepsilon_{00} &= \frac{OA^\prime - OA}{OA}\\
+        \varepsilon_{11} &= \frac{OB^\prime - OB}{OB}
+    \end{aligned}
+\end{equation}
+and the shear strain is described as follows:
+\begin{equation}
+    \gamma_{xy} = \gamma_{yx} = \frac{1}{2}\tan\left(\angle AOB - \angle A^\prime OB^\prime\right)    
+\end{equation}
+
+The principal strains are defined as the eigenvalues of the strain tensor:
+\begin{equation}
+    \begin{pmatrix}
+        \varepsilon_x && \gamma_{xy} \\
+        \gamma_{yx} && \varepsilon_y
+    \end{pmatrix}        
+\end{equation}
+so the principal strains are as follows:
+\begin{equation}
+    \varepsilon_{\mathrm{max}}, \varepsilon_{\mathrm{min}} = \frac{1}{2}\left(\varepsilon_x + \varepsilon_y \pm \sqrt{(\varepsilon_x + \varepsilon_y)^2 + 4(\varepsilon_x\varepsilon_y-\gamma_{xy}\gamma_{yx})}\right)    
+\end{equation}
+
+\subsubsection{Shader program}
+Please refer to \href{https://github.com/t-34400/PhysicsAndMathematics/SampleCode/PrincipalStrainShader}{\textbf{SampleCode/PrincipalStrainShader}} for a sample code of shaders that calculates the 2D principal strains from the original and current vertex positions, and colors them based on their magnitude.
+
+\end{document}
