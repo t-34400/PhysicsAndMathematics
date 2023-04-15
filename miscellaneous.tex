@@ -1,6 +1,8 @@
 \documentclass[]{article}
 \usepackage{amsthm}
 \usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{here}
 \usepackage{hyperref}
 \usepackage{tikz}
 
@@ -16,34 +18,30 @@
 
 \section{Strain}
 \definition{strain matrix}
-\subsection{Trianlge mesh (2D strain)}
-Let the infinitesimal triangular surface $OAB$ be deformed into an infinitesimal triangular surface $OA^\prime B^\prime$. When considering strain, the rigid body transformation part can be ignored, so it can be assumed that $O$, $A$ and $A^\prime$ are colinear and $OAB$ and $OA^\prime B^\prime$ are in the same plane. 
-
-In this case, the normal strains are described as follows:
+\subsection{Triangle mesh (2D strain)}
+Let the infinitesimal triangular surface $OAB$ be deformed into an infinitesimal triangular surface $O^\prime A^\prime B^\prime$. 
+\begin{figure}[H]
+    \centering
+    \includegraphics{./.latex-img/.latex/miscellaneous_triangle_mesh_2d_strain.pdf}
+    \label{fig:infinitesimal_triangle_deformation_2d_strain}
+\end{figure}
+When considering strain, the rigid body transformation part can be ignored, so it can be assumed that $O$ and $O^\prime$ are the same point, and $O$, $A$ and $A^\prime$ are colinear, and $OAB$ and $O A^\prime B^\prime$ are in the same plane. 
+Then we define the $x_0$-axis as the $OA$ direction and the $x_1$-axis so that the $x_0x_1$ plane contains the triangles $OAB$ and $OA^\prime B^\prime$.
+In this case, the normal strains and shear strains are described as follows:
 \begin{equation}
     \begin{aligned}
-        \varepsilon_{00} &= \frac{OA^\prime - OA}{OA}\\
-        \varepsilon_{11} &= \frac{OB^\prime - OB}{OB}
+        \varepsilon_{00} &= \frac{|\vec{a}^\prime| - |\vec{a}|}{|\vec{a}|}\\
+        \varepsilon_{11} &= \frac{b^\prime_1 - b_1}{b_1}\\
+        \varepsilon_{10} = \varepsilon_{01} &= \frac{b^\prime_0 - (1+\varepsilon_{00})b_0}{2b_1}
     \end{aligned}
 \end{equation}
-and the shear strain is described as follows:
-\begin{equation}
-    \gamma_{xy} = \gamma_{yx} = \frac{1}{2}\tan\left(\angle AOB - \angle A^\prime OB^\prime\right)    
-\end{equation}
 
-The principal strains are defined as the eigenvalues of the strain tensor:
+The principal strains are defined as the eigenvalues of the strain tensor, so the principal strains are as follows:
 \begin{equation}
-    \begin{pmatrix}
-        \varepsilon_x && \gamma_{xy} \\
-        \gamma_{yx} && \varepsilon_y
-    \end{pmatrix}        
-\end{equation}
-so the principal strains are as follows:
-\begin{equation}
-    \varepsilon_{\mathrm{max}}, \varepsilon_{\mathrm{min}} = \frac{1}{2}\left(\varepsilon_x + \varepsilon_y \pm \sqrt{(\varepsilon_x + \varepsilon_y)^2 + 4(\varepsilon_x\varepsilon_y-\gamma_{xy}\gamma_{yx})}\right)    
+    \varepsilon_{\mathrm{max}}, \varepsilon_{\mathrm{min}} = \frac{1}{2}\left(\varepsilon_{00} + \varepsilon_{11} \pm \sqrt{(\varepsilon_x + \varepsilon_y)^2 - 4(\varepsilon_{00}\varepsilon_{11}-\varepsilon_{01}\varepsilon_{10})}\right)    
 \end{equation}
 
 \subsubsection{Shader program}
-Please refer to \href{https://github.com/t-34400/PhysicsAndMathematics/SampleCode/PrincipalStrainShader}{\textbf{SampleCode/PrincipalStrainShader}} for a sample code of shaders that calculates the 2D principal strains from the original and current vertex positions, and colors them based on their magnitude.
+Please refer to \href{https://github.com/t-34400/PhysicsAndMathematics/tree/main/SampleCode/PrincipalStrainShader}{\textbf{SampleCode/PrincipalStrainShader}} for a sample code of shaders that calculates the 2D principal strains from the original and current vertex positions, and color meshes based on their principal strains.
 
 \end{document}
