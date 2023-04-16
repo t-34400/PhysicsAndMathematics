@@ -53,7 +53,7 @@ void main() {
 
     float epsilon00 = (currentEdgeLengthA - originalEdgeLengthA) / originalEdgeLengthA;
     float epsilon11 = (currentEdgeBY - originalEdgeBY) / originalEdgeBY;
-    float epsilon10 = 0.5 * (currentEdgeBX - (1.0 + epsilon00) * originalEdgeBX) / originalEdgeBY;
+    float epsilon10 = 0.5 * (currentEdgeBX - (1.0 + epsilon00) * originalEdgeBY) / originalEdgeBY;
 
     float b = epsilon00 + epsilon11;
     float c = epsilon00 * epsilon11 -epsilon10 * epsilon10;
