@@ -18,8 +18,9 @@
 
 precision mediump float;
 
-out vec3 vCurrentPosition;
-out vec3 vOriginalPosition;
+in vec3 vCurrentPosition;
+in vec3 vOriginalPosition;
+in vec3 vNormal;
 
 out vec4 fragColor;
 
@@ -61,11 +62,9 @@ void main() {
 
     float normalizedStrain = clamp(abs(principalStrain) / strainNormalizationFactor, 1.0e-4, 0.9999);
 
-    vec3 normal = normalize(cross(currentEdgeA, currentEdgeB));
-
     vec3 color = vec3(normalizedStrain, 1 - normalizedStrain, 0.0);
     vec3 ambient = color * 0.1;
-    vec3 diffuse = max(dot(normal, normalize(lightPosition)), 0.0) * lightColor * color;
+    vec3 diffuse = max(dot(vNormal, normalize(lightPosition)), 0.0) * lightColor * color;
 
     fragColor = vec4(ambient + diffuse, 1.0);
 }

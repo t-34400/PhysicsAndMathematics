@@ -18,14 +18,18 @@
 
 in vec3 aCurrentPosition;
 in vec3 aOriginalPosition;
+in vec3 aNormal;
 
 out vec3 vCurrentPosition;
 out vec3 vOriginalPosition;
+out vec3 vNormal;
 
-uniform mat4 uMvpMatrix;
+uniform mat4 uMvMatrix;
+uniform mat4 uProjctionMatrix;
 
 void main() {
-    gl_Position = modelViewProjectionMatrix * vec4(aCurrentPosition, 1.0);
+    gl_Position = uProjctionMatrix * uMvMatrix * vec4(aCurrentPosition, 1.0);
     vCurrentPosition = aCurrentPosition;
     vOriginalPosition = aOriginalPosition;
+    vNormal = uMvMatrix * aNormal;
 }
