@@ -1,5 +1,15 @@
 \documentclass[draft]{article}
+\usepackage{amsmath, amsthm}
+\usepackage{bm}
 \usepackage{tikz}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problems}[section]
+\newtheorem{solution}{Solutions}[section]
+
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\pardif}[2]{\frac{\partial #1}{\partial #2}}
+
 
 \title{Mathematics for physics}
 \author{@t-34400}
@@ -7,4 +17,73 @@
 \begin{document}
 \maketitle
 
+\section{Differentiation and partial differentiation}
+\subsection{Lagrange multiplier}
+
+\begin{problem}
+    If there is a condition 
+    \begin{align}
+        g(\bm{x})=c\mathrm{\quad where\quad}c\mathrm{\ \ is\ constant}    
+    \end{align}
+    on a variable $\bm{x} = (x_1,\ldots, x_n)$, find the extrema of $f(\bm{x})$. Here, assume that both functions $f, g$ belong to $C^1$. 
+\end{problem}
+\begin{solution}
+    Under the condition $g(\bm{x})$, a infinitely small variations in variables $\dif \bm{x}$ satisfies equation:
+    \begin{align}
+        \nabla g(\bm{x})\cdot\dif\bm{x} = \sum_{i=1}^n\pardif{g}{x_i}\dif x_i = 0        
+    \end{align}
+    so the change in $f$ with respect to these variations in variables can be describe as follows:
+    \begin{align}
+        \dif f &= \nabla f\cdot\dif\bm{x}\\
+        &=\sum_{i=1}^{n}\pardif{f}{x_i}\dif x_i\\
+        &=\sum_{i=1}^{n-1}\pardif{f}{x_i}\dif x_i + \pardif{f}{x_n}\left(\pardif{g}{x_n}\right)^{-1}\sum_{i=1}^{n-1}\pardif{g}{x_i}\dif x_i\\
+        &=\sum_{i=1}^{n-1}\left(\pardif{f}{x_i} + \lambda\pardif{g}{x_i}\right)\dif x_i
+    \end{align}
+    where $\lambda = \pardif{f}{x_n}\left(\pardif{g}{x_n}\right)^{-1}$. Since $\dif f=0$ on the constrained extrema of $f$ for the arbitrary infinitesimal variations $\dif x_1,\ldots ,\dif x_{n-1}$, the coefficients of $\dif x_i (i=1,\ldots, n-1)$ must be zero:
+    \begin{align}
+        \pardif{f}{x_i} + \lambda\pardif{g}{x_i} = 0\mathrm{\quad for\quad}x=1,\ldots,n-1
+    \end{align}
+    From the definition of $\lambda$, this equation holds for all $i$ between $1$ and $n$ inclusive.
+
+    Therefore, the extrema of a function $f(\bm{x})$ subject to constraints $g(\bm{x}) = c$ can be obtained by solving the extrema problem for $\tilde{f} = f - \lambda g$.
+\end{solution}
+
+\begin{problem}
+    If there are two conditions:
+    \begin{align}
+        \sum_{i=1}^Np_i&=1\\
+        \sum_{i=1}^Np_i\epsilon_i&=E\ (\mathrm{constant})
+    \end{align}
+    on the variables $p_i \{i=1,\ldots,N\}$, find the stationary points of the following value:
+    \begin{align}
+        S=-\sum_{i=1}^Np_i\log p_i
+    \end{align}
+\end{problem}
+\begin{solution}
+    Let $\tilde{f}$ be 
+    \begin{align}
+        \tilde{f} = -\sum_{i=1}^Np_i\log p_i-\alpha\sum_{i=1}^Np_i -\beta\sum_{i=1}^Np_i\epsilon_i
+    \end{align}
+    where $\alpha, \beta$ are the Lagrange multipliers. At the stationary points,
+    \begin{align}
+        \pardif{\tilde{f}}{p_i} = 0
+    \end{align}
+    and then
+    \begin{align}
+        -\log p_i - 1 - \alpha -\beta\epsilon_i = 0
+    \end{align}
+    threfore
+    \begin{align}
+            p_i = e^{-\alpha - 1} e^{-\beta\epsilon_i}
+    \end{align}
+
+    By determining $\alpha$ based on the first condition, we obtain
+    \begin{align}
+        p_i = \frac{e^{-\beta\epsilon_i}}{\sum_{i=1}^Ne^{-\beta\epsilon_i}}
+    \end{align}
+    $\beta$ can be determined based on the second condition
+    \begin{align}
+        \frac{\sum_{i=1}^N\epsilon_ie^{-\beta\epsilon}}{\sum_{i=1}^Ne^{-\beta\epsilon}} = E
+    \end{align}
+\end{solution}    
 \end{document}
