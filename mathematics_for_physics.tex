@@ -1,5 +1,6 @@
 \documentclass[draft]{article}
 \usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
 \usepackage{bm}
 \usepackage{tikz}
 
@@ -90,12 +91,29 @@
 \subsubsection{Jacobian}
 
 \begin{problem}
+    The Jacobian matrix is defined as:
+    \begin{align}
+        \pardif{\bm{f}}{\bm{x}}\equiv\left|\pardif{\bm{f}}{x_1},\ldots, \pardif{\bm{f}}{x_n}\right|
+        =
+        \begin{vmatrix}
+            \pardif{f_1}{x_1}&\ldots&\pardif{f_m}{x_1} \\
+            \vdots&\cdots&\vdots \\
+            \pardif{f_1}{x_n}&\ldots&\pardif{f_m}{x_n}
+        \end{vmatrix}
+    \end{align}
+    where $f: \mathbb{R}^n \to \mathbb{R}^m$ is a function such that each of its first-order partial derivatives exist on $\mathbb{R}^n$. 
+    
     Show the equation:
     \begin{align}
-        \pardif{(f,g,h)}{(x,y,z)}\pardif{(u,v,w)}{(f,g,h)} = \pardif{(u,v,w)}{(x,y,z)}
+        \pardif{\bm{f}}{\bm{x}}\pardif{\bm{g}}{\bm{f}} = \pardif{\bm{f}}{\bm{x}}
     \end{align}
+    where $f: \mathbb{R}^n \to \mathbb{R}^m$ and $g: \mathbb{R}^m \to \mathbb{R}^l$ are functions such that each of their first-order partial derivatives exist on $\mathbb{R}^n$ or $\mathbb{R}^m$. 
 \end{problem}
 \begin{solution}
-    
+    \begin{align}
+        \pardif{\bm{f}}{\bm{x}}\pardif{\bm{g}}{\bm{f}}&=\left|\pardif{\bm{f}}{x_1},\ldots,\pardif{\bm{f}}{x_n}\right|\left|\pardif{\bm{g}}{f_1},\ldots,\pardif{\bm{g}}{f_m}\right| \\
+        &=\left|\sum_i^m\pardif{f_i}{x_1}\pardif{\bm{g}}{f_1}, \ldots, \sum_i^m\pardif{f_i}{x_n}\pardif{\bm{g}}{f_1}\right| \\
+        &=\left|\pardif{\bm{g}}{x_1},\ldots,\pardif{\bm{g}}{x_m}\right| \\
+    \end{align}
 \end{solution}
 \end{document}
