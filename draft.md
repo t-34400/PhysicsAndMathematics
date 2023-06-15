@@ -2,7 +2,8 @@
 - cluminate
 - ether
 - vault
-- -etch
+- etch
+- confiscate
 
 # Mit classical mechanincs
 ## Chapter 1
