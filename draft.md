@@ -4,6 +4,7 @@
 - vault
 - etch
 - confiscate
+- precinct
 
 # Mit classical mechanincs
 ## Chapter 1
