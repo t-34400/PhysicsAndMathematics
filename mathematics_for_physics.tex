@@ -116,4 +116,17 @@
         &=\left|\pardif{\bm{g}}{x_1},\ldots,\pardif{\bm{g}}{x_m}\right| \\
     \end{align}
 \end{solution}
+
+\begin{problem}
+    Prove the following equation:
+    \begin{align}
+        \left(\pardif{u}{x}\right)_y\left(\pardif{y}{z}\right)_x=\left(\pardif{u}{x}\right)_z\left(\pardif{y}{z}\right)_u
+    \end{align}    
+\end{problem}
+\begin{solution}
+    \begin{align}
+        (\mathrm{LHS}) &= \pardif{(u,y)}{(x,y)}\pardif{(y,x)}{(z,x)} = - \pardif{(u,y)}{(z,x)} \\
+        (\mathrm{RHS}) &= \pardif{(y,z)}{(x,z)}\pardif{(y,u)}{(z,u)} = - \pardif{(y,u)}{(x,z)} = (\mathrm{LHS})
+    \end{align}
+\end{solution}
 \end{document}
