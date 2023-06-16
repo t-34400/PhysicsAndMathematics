@@ -5,6 +5,8 @@
 - etch
 - confiscate
 - precinct
+- sanitation
+- 
 
 # Mit classical mechanincs
 ## Chapter 1
