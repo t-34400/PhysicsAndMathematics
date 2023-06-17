@@ -5,6 +5,7 @@
 \usepackage{tikz}
 
 \theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{problem}{Problems}[section]
 \newtheorem{solution}{Solutions}[section]
 
@@ -128,5 +129,29 @@
         (\mathrm{LHS}) &= \pardif{(u,y)}{(x,y)}\pardif{(y,x)}{(z,x)} = - \pardif{(u,y)}{(z,x)} \\
         (\mathrm{RHS}) &= \pardif{(y,z)}{(x,z)}\pardif{(y,u)}{(z,u)} = - \pardif{(y,u)}{(x,z)} = (\mathrm{LHS})
     \end{align}
+\end{solution}
+
+\subsubsection{Homogeneous function}
+
+\begin{definition}
+    If $k$ is an integer, a function $f$ of $n$ variables is homogenous of degree $k$ If
+    \begin{align}
+        f(sx_1, \ldots, sx_n) = s^kf(x_1, \ldots, x_n)
+    \end{align}
+    for every $x_1, \ldots, x_n$ and $s\neq0$.
+\end{definition}
+\begin{problem}
+    Prove the following equation:
+    \begin{align}
+        \sum_i^nx_i\pardif{f}{x_i}=kf
+    \end{align}
+    where $f$ is a homogenous function of degree $k$ of $n$ variables.
+\end{problem}
+\begin{solution}
+    The chain rule of composite functions states that
+    \begin{align}
+        \sum_i^n\pardif{(ax_i)}{a}\pardif{f(ax_1,\ldots,ax_n)}{(ax_i)}=ka^{k-1}f(x_1,\ldots,x_n)
+    \end{align}
+    Since the partial derivatives $\pardif{(ax_i)}{a}$ are $x_i$, let $t=1$ then you can get the given equation.
 \end{solution}
 \end{document}
