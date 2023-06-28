@@ -6,7 +6,7 @@
 - confiscate
 - precinct
 - sanitation
-- 
+- haptic
 
 # Mit classical mechanincs
 ## Chapter 1
