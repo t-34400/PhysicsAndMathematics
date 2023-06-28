@@ -7,6 +7,7 @@
 - precinct
 - sanitation
 - haptic
+- incongruous
 
 # Mit classical mechanincs
 ## Chapter 1
