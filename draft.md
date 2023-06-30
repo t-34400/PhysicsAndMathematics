@@ -1,9 +1,4 @@
 # Anki
-- cluminate
-- ether
-- vault
-- etch
-- confiscate
 - precinct
 - sanitation
 - haptic
