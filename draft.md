@@ -3,6 +3,7 @@
 - sanitation
 - haptic
 - incongruous
+- ascribe 
 
 # Mit classical mechanincs
 ## Chapter 1
